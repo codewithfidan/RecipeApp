@@ -30,11 +30,9 @@ struct RecipeListView: View {
                         
                         Text(r.name)
                     }
-                }
-
-                
-                    
+                }    
             }.navigationBarTitle("All Recipes")
+                .listStyle(PlainListStyle())
         }.navigationViewStyle(.stack)
     }
 }
