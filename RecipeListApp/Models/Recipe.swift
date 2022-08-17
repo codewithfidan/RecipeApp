@@ -8,7 +8,8 @@
 import Foundation
 
 class Recipe: Identifiable,Decodable{
-    
+    //Identifiable - let us work inside a swiftui list so you can work each element apart
+    //Decodable - let us easily decode json data
     var id:UUID?
     var name:String
     var featured:Bool
@@ -18,6 +19,15 @@ class Recipe: Identifiable,Decodable{
     var cookTime:String
     var totalTime:String
     var servings:Int
-    var ingredients:[String]
+    var highlights:[String]
+    var ingredients:[Ingredient]
     var directions:[String]
+}
+class Ingredient: Identifiable, Decodable{
+    
+    var id:UUID?
+    var name:String
+    var num:Int?
+    var denom:Int?
+    var unit:String?
 }

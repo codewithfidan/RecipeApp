@@ -21,11 +21,13 @@ struct RecipeDetailView: View {
                     .resizable()
                     .scaledToFill()
                 Divider()
+                
+                
                 Text("Ingredients")
                     .font(.headline)
-                    .padding(.bottom, 5.0)
-                ForEach(recipe.ingredients, id: \.self){item in
-                    Text("• " + item)
+                    .padding(.bottom, 5.0)//we dont need id: \.self because ingredients is identifiable object
+                ForEach(recipe.ingredients){item in
+                    Text("• " + item.name)
                         .padding(.bottom, 3.0)
                 }
                 Divider()
