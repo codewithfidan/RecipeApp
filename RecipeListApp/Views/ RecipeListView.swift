@@ -9,9 +9,9 @@ import SwiftUI
 
 struct RecipeListView: View {
     
-    //reference the view model
-    @ObservedObject var model = RecipeModel()
+    @EnvironmentObject var model:RecipeModel
     
+   
     var body: some View {
         
         NavigationView {
@@ -42,3 +42,8 @@ struct RecipeListView_Previews: PreviewProvider {
         RecipeListView()
     }
 }
+/*
+ reference the view model
+@ObservedObject var model = RecipeModel()
+@ObservedObject is simply to get changes when recipeModel changes
+ */

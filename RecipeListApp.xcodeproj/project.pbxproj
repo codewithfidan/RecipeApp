@@ -16,6 +16,7 @@
 		225E9C6A28A3F48800658039 /* recipes.json in Resources */ = {isa = PBXBuildFile; fileRef = 225E9C6928A3F48800658039 /* recipes.json */; };
 		225E9C6C28A3F5C600658039 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E9C6B28A3F5C600658039 /* Recipe.swift */; };
 		225E9C6E28A3F85C00658039 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E9C6D28A3F85C00658039 /* RecipeModel.swift */; };
+		226F66AB28AD55F7006AEBE1 /* RecipeFeaturedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F66AA28AD55F7006AEBE1 /* RecipeFeaturedView.swift */; };
 		229CE69928A69E9400E31BBF /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229CE69828A69E9400E31BBF /* RecipeDetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		225E9C6928A3F48800658039 /* recipes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recipes.json; sourceTree = "<group>"; };
 		225E9C6B28A3F5C600658039 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		225E9C6D28A3F85C00658039 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
+		226F66AA28AD55F7006AEBE1 /* RecipeFeaturedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFeaturedView.swift; sourceTree = "<group>"; };
 		229CE69828A69E9400E31BBF /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +115,7 @@
 				225E9C5728A3F0A000658039 /*  RecipeListView.swift */,
 				229CE69828A69E9400E31BBF /* RecipeDetailView.swift */,
 				225A1ABD28AAA5CE00535BAB /* RecipeTabView.swift */,
+				226F66AA28AD55F7006AEBE1 /* RecipeFeaturedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				225E9C5828A3F0A000658039 /*  RecipeListView.swift in Sources */,
 				225E9C5628A3F0A000658039 /* RecipeListApp.swift in Sources */,
 				220018A928A65745009FCE2A /* DataService.swift in Sources */,
+				226F66AB28AD55F7006AEBE1 /* RecipeFeaturedView.swift in Sources */,
 				225A1ABE28AAA5CE00535BAB /* RecipeTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
