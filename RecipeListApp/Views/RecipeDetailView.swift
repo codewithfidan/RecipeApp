@@ -9,29 +9,46 @@ import SwiftUI
 
 struct RecipeDetailView: View {
     
+    @State var selectedServingSize = 2
     var  recipe:Recipe
     /*  i am not going to set this property to any particular instance right now, because i am going to rely on the list view to assign the particular recipe that we want to use.to display the ui.that is why this is going to be unset right now.it is gonna determined by what the user tabs on in the view list.
-    */
+     */
     var body: some View {
         
         ScrollView{
-            
             VStack(alignment: .leading){
+                
+                //MARK: Recipe Image
                 Image(recipe.image)
                     .resizable()
-                    .scaledToFill()
-                Divider()
+                    .scaledToFit()
+                    .cornerRadius(10)
                 
+                //MARK: Serving Size Picker
+                VStack(alignment: .leading){
+                    Text("Select your serving size:")
+                    Picker("", selection: $selectedServingSize){
+                        Text("2").tag(2)
+                        Text("4").tag(4)
+                        Text("6").tag(6)
+                        Text("8").tag(8)
+                    }.pickerStyle(SegmentedPickerStyle())
+                        .frame(width: 160)
+                }.padding(.vertical)
                 
-                Text("Ingredients")
-                    .font(.headline)
-                    .padding(.bottom, 5.0)//we dont need id: \.self because ingredients is identifiable object
-                ForEach(recipe.ingredients){item in
-                    Text("• " + item.name)
-                        .padding(.bottom, 3.0)
+                VStack(alignment: .leading){
+                    
+                    //MARK: Ingredients
+                    Text("Ingredients")
+                        .font(.headline)
+                        .padding(.bottom, 5.0)//we dont need id: \.self because ingredients is identifiable object
+                    ForEach(recipe.ingredients){item in
+                        Text("• " + RecipeModel.getPortion(ingredient: item, recipeServings: recipe.servings, targetServings: selectedServingSize) + " " + item.name.lowercased())
+                    }
                 }
                 Divider()
                 
+                //MARK: Directions
                 Text("Directions")
                     .font(.headline)
                     .padding(.bottom, 5.0)
@@ -46,12 +63,8 @@ struct RecipeDetailView: View {
 
 struct RecipeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        
         // create a dummy recipe and pass it into the detail view so that we can see a preview
-        
         let model = RecipeModel()
-        
-        
-        RecipeDetailView(recipe: model.recipes[0])
+        RecipeDetailView(recipe: model.recipes[1])
     }
 }

@@ -67,6 +67,11 @@ struct RecipeListView_Previews: PreviewProvider {
 
 
 /*
+ 
+ You can use ForEach inside of a scroll view to display items in a scrollable list! You can edit alignment, spacing, etc. with modifiers
+ ScrollView {
+   ForEach(...) { ... }
+ }
  NavigationView {
  List(model.recipes){ r in
  NavigationLink {
