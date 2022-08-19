@@ -16,13 +16,19 @@ struct RecipeDetailView: View {
     var body: some View {
         
         ScrollView{
-            VStack(alignment: .leading){
+            VStack(alignment: .leading, spacing:5){
                 
                 //MARK: Recipe Image
                 Image(recipe.image)
                     .resizable()
                     .scaledToFit()
                     .cornerRadius(10)
+                
+                //MARK: Recipe title
+                Text(recipe.name)
+                    .bold()
+                    .padding(.top,20)
+                    .font(.largeTitle)
                 
                 //MARK: Serving Size Picker
                 VStack(alignment: .leading){
@@ -57,7 +63,7 @@ struct RecipeDetailView: View {
                         .padding(3.0)
                 }
             }.padding(/*@START_MENU_TOKEN@*/.horizontal/*@END_MENU_TOKEN@*/)
-        }.navigationBarTitle(recipe.name)
+        }
     }
 }
 
@@ -65,6 +71,6 @@ struct RecipeDetailView_Previews: PreviewProvider {
     static var previews: some View {
         // create a dummy recipe and pass it into the detail view so that we can see a preview
         let model = RecipeModel()
-        RecipeDetailView(recipe: model.recipes[1])
+        RecipeDetailView(recipe: model.recipes[0])
     }
 }
