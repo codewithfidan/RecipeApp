@@ -11,28 +11,39 @@ struct RecipeListView: View {
     
     @EnvironmentObject var model:RecipeModel
     
-   
+    
     var body: some View {
         
         NavigationView {
-            List(model.recipes){ r in
-                NavigationLink {
-                    RecipeDetailView(recipe: r)
-                } label: {
-                    //MARK: row item
-                    HStack(spacing: 15.0){
-                        Image(r.image)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 70, height: 70, alignment: .center)
-                            .clipped()//clip image that are outside of the frame
-                            .cornerRadius(5.0)
-                        
-                        Text(r.name)
+            
+            VStack(alignment: .leading){
+                Text("All Recipes")
+                    .bold()
+                    .padding(.top,40)
+                    .font(.largeTitle)
+                ScrollView{
+                    LazyVStack(alignment:.leading){
+                        //creating items only as needed.
+                        ForEach(model.recipes){ r in
+                            NavigationLink {
+                                RecipeDetailView(recipe: r)
+                            } label: {
+                                //MARK: row item
+                                HStack(spacing: 15.0){
+                                    Image(r.image)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 70, height: 70, alignment: .center)
+                                        .clipped()//clip image that are outside of the frame
+                                        .cornerRadius(5.0)
+                                    
+                                    Text(r.name).foregroundColor(.black)
+                                }
+                            }
+                        }.navigationBarHidden(true)
                     }
-                }    
-            }.navigationBarTitle("All Recipes")
-                .listStyle(PlainListStyle())
+                }
+            }.padding(.leading)
         }.navigationViewStyle(.stack)
     }
 }
@@ -40,10 +51,42 @@ struct RecipeListView: View {
 struct RecipeListView_Previews: PreviewProvider {
     static var previews: some View {
         RecipeListView()
+            .environmentObject(RecipeModel())
     }
 }
+
+/**
+ lazyVStack is better than VStack because it only creates elements or renders them as needed.
+ imagine you have so many rows and the majority of rows are off the screen - with VStack it might allocate memory for all of those items ans render them even though you cant see them,whereas LazyVStack  will only render the objects and allocate memory as they are being scrolled into view as they are needed
+ */
 /*
  reference the view model
-@ObservedObject var model = RecipeModel()
-@ObservedObject is simply to get changes when recipeModel changes
+ @ObservedObject var model = RecipeModel()
+ @ObservedObject is simply to get changes when recipeModel changes
+ */
+
+
+/*
+ NavigationView {
+ List(model.recipes){ r in
+ NavigationLink {
+ 
+ RecipeDetailView(recipe: r)
+ } label: {
+ 
+ //MARK: row item
+ HStack(spacing: 15.0){
+ Image(r.image)
+ .resizable()
+ .scaledToFill()
+ .frame(width: 70, height: 70, alignment: .center)
+ .clipped()//clip image that are outside of the frame
+ .cornerRadius(5.0)
+ 
+ Text(r.name)
+ }
+ }
+ }.navigationBarTitle("All Recipes")
+ .listStyle(PlainListStyle())
+ }.navigationViewStyle(.stack)
  */
