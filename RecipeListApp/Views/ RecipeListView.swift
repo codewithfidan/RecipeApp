@@ -36,8 +36,11 @@ struct RecipeListView: View {
                                         .frame(width: 70, height: 70, alignment: .center)
                                         .clipped()//clip image that are outside of the frame
                                         .cornerRadius(5.0)
+                                    VStack(alignment: .leading){
+                                        Text(r.name).bold()
+                                        RecipeHighlights(highlights: r.highlights)
+                                    }.foregroundColor(.black)
                                     
-                                    Text(r.name).foregroundColor(.black)
                                 }
                             }
                         }.navigationBarHidden(true)
